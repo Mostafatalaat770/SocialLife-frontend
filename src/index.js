@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { login, signup } from "./services/dataController";
 
-const LoginForm = ({ setCurrentUser }) => {
+const LoginForm = ({ setCurrentUser, setCurrentPage }) => {
 	const [emailTextField, setEmailTextField] = useState("Enter your E-mail..");
 	const [passwordTextField, setPasswordTextField] = useState(
 		"Enter your password.."
@@ -18,24 +18,29 @@ const LoginForm = ({ setCurrentUser }) => {
 		login({
 			Email: emailTextField,
 			password: passwordTextField,
-		}).then((user) => setCurrentUser(user.data));
+		}).then((user) => {
+			setCurrentUser(user.data);
+			setCurrentPage("signup");
+		});
 	};
 	return (
 		<form onSubmit={formLogin}>
-      <label for="email">E-mail</label>
+			<label for="email">E-mail</label>
 			<input
-        type="text"
-        id="email"
+				type="text"
+				id="email"
 				value={emailTextField}
 				onChange={handleEmailField}
-			/><br/>
-      <label for="password">Password</label>
+			/>
+			<br />
+			<label for="password">Password</label>
 			<input
-        type="password"
-        id="password"
+				type="password"
+				id="password"
 				value={passwordTextField}
 				onChange={handlePasswordField}
-			/><br/>
+			/>
+			<br />
 			<button type="submit">Login</button>
 		</form>
 	);
@@ -130,36 +135,42 @@ const SignupForm = ({ setCurrentUser }) => {
 				id="email"
 				value={emailTextField}
 				onChange={handleEmailField}
-			/><br/>
+			/>
+			<br />
 			<label for="password">Password</label>
 			<input
 				type="text"
 				id="password"
 				value={passwordTextField}
 				onChange={handlePasswordField}
-			/><br/>
+			/>
+			<br />
 			<label for="fname">First Name</label>
 			<input
 				type="text"
 				id="fname"
 				value={fnameTextField}
 				onChange={handleFnameField}
-			/><br/>
+			/>
+			<br />
 			<label for="lname">Last Name</label>
 			<input
 				type="text"
 				id="lname"
 				value={lnameTextField}
 				onChange={handleLnameField}
-			/><br/>
+			/>
+			<br />
 			<label for="phone">Phone Number</label>
 			<input
 				type="text"
 				id="phone"
 				value={phoneNumderTextField}
 				onChange={handlePhoneNumberField}
-			/><br/>
-			<label>Gender</label><br/>
+			/>
+			<br />
+			<label>Gender</label>
+			<br />
 			<input
 				type="radio"
 				id="male"
@@ -167,7 +178,8 @@ const SignupForm = ({ setCurrentUser }) => {
 				value="male"
 				onChange={handleGenderField}
 			/>
-			<label for="male">Male</label><br/>
+			<label for="male">Male</label>
+			<br />
 			<input
 				type="radio"
 				id="female"
@@ -175,7 +187,8 @@ const SignupForm = ({ setCurrentUser }) => {
 				value="female"
 				onChange={handleGenderField}
 			/>
-			<label for="female">Female</label><br/>
+			<label for="female">Female</label>
+			<br />
 			<input
 				type="radio"
 				id="other"
@@ -183,42 +196,48 @@ const SignupForm = ({ setCurrentUser }) => {
 				value="other"
 				onChange={handleGenderField}
 			/>
-			<label for="other">Other</label><br/>
+			<label for="other">Other</label>
+			<br />
 			<label for="date">Date Of Birth</label>
 			<input
 				type="date"
 				id="date"
 				value={dobTextField}
 				onChange={handleDOBField}
-			/><br/>
+			/>
+			<br />
 			<label for="profilePicture">Profile Picture</label>
 			<input
 				type="image"
 				id="profilePicture"
 				value={profilePictureTextField}
 				onChange={handleProfilePictureField}
-			/><br/>
+			/>
+			<br />
 			<label for="hometown">Hometown</label>
 			<input
 				type="text"
 				id="hometown"
 				value={homeTownTextField}
 				onChange={handleHomeTownField}
-			/><br/>
+			/>
+			<br />
 			<label for="martialStatus">Martial Status</label>
 			<input
 				type="text"
 				id="martialStatus"
 				value={maritalStatusTextField}
 				onChange={handleMaritalStatusField}
-			/><br/>
+			/>
+			<br />
 			<label for="aboutMe">About Me</label>
 			<input
 				type="text"
 				id="aboutMe"
 				value={aboutMeTextField}
 				onChange={handleAboutMeField}
-			/><br/>
+			/>
+			<br />
 			<button type="submit">Signup</button>
 		</form>
 	);
@@ -226,13 +245,26 @@ const SignupForm = ({ setCurrentUser }) => {
 
 const App = () => {
 	const [currentUser, setCurrentUser] = useState(null);
-  
-  return (
-		<div>
-		<LoginForm setCurrentUser={setCurrentUser} />
-    <SignupForm setCurrentUser={setCurrentUser} />
-    </div>
-	);
+	const [currentPage, setCurrentPage] = useState("login");
+	if (currentPage === "login") {
+		return (
+			<div>
+				<LoginForm
+					setCurrentUser={setCurrentUser}
+					setCurrentPage={setCurrentPage}
+				/>
+			</div>
+		);
+	}
+
+	if (currentPage === "signup") {
+		return (
+			<>
+				<SignupForm setCurrentUser={setCurrentUser} />
+			</>
+		);
+	}
+	return <div></div>;
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
