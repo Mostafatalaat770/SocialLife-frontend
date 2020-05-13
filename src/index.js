@@ -1,50 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { login, signup } from "./services/dataController";
+import { signup, getUserByID, getUserInfoByID } from "./services/dataController";
+import Login from "./components/login"
 
-const LoginForm = ({ setCurrentUser, setCurrentPage }) => {
-	const [emailTextField, setEmailTextField] = useState("Enter your E-mail..");
-	const [passwordTextField, setPasswordTextField] = useState(
-		"Enter your password.."
-	);
-	const handleEmailField = (event) => {
-		setEmailTextField(event.target.value);
-	};
-	const handlePasswordField = (event) => {
-		setPasswordTextField(event.target.value);
-	};
-	const formLogin = (event) => {
-		event.preventDefault();
-		login({
-			Email: emailTextField,
-			password: passwordTextField,
-		}).then((user) => {
-			setCurrentUser(user.data);
-			setCurrentPage("signup");
-		});
-	};
-	return (
-		<form onSubmit={formLogin}>
-			<label for="email">E-mail</label>
-			<input
-				type="text"
-				id="email"
-				value={emailTextField}
-				onChange={handleEmailField}
-			/>
-			<br />
-			<label for="password">Password</label>
-			<input
-				type="password"
-				id="password"
-				value={passwordTextField}
-				onChange={handlePasswordField}
-			/>
-			<br />
-			<button type="submit">Login</button>
-		</form>
-	);
-};
 
 const SignupForm = ({ setCurrentUser }) => {
 	const [emailTextField, setEmailTextField] = useState("Enter your E-mail..");
@@ -249,7 +207,7 @@ const App = () => {
 	if (currentPage === "login") {
 		return (
 			<div>
-				<LoginForm
+				<Login
 					setCurrentUser={setCurrentUser}
 					setCurrentPage={setCurrentPage}
 				/>
