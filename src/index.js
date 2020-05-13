@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { signup, getUserByID, getUserInfoByID } from "./services/dataController";
 import Login from "./components/login"
 import Signup from "./components/signup"
-
-
+import Profile from "./components/profile"
 
 
 const App = () => {
@@ -27,6 +25,12 @@ const App = () => {
 				<Signup setCurrentUser={setCurrentUser} />
 			</>
 		);
+	}
+
+	if(currentPage === "profilePage"){
+		return <>
+			<Profile requestedID={currentUser.ID} />
+		</>
 	}
 	return <div></div>;
 };
