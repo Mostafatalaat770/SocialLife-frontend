@@ -14,6 +14,9 @@ const updateCurrentProfile = (updatedData) => {
 const getUserByID = (ID) => {
     return axios.get(`${url}/user/${ID}`).then(response => response)
 }
+const getUserInfoByID = (ID) => {
+    return axios.get(`${url}/user/${ID}/info`).then(response => response)
+}
 const addPublicPost = (post) => {
     return axios.post(`${url}/posts/public`, post).then(response => response)
 }
@@ -40,6 +43,7 @@ export {
     signup,
     updateCurrentProfile,
     getUserByID,
+    getUserInfoByID,
     addPublicPost,
     addPrivatePost,
     acceptFriendRequest,
