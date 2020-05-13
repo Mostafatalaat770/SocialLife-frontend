@@ -87,7 +87,7 @@ const SignupForm = ({ setCurrentUser }) => {
 	};
 	return (
 		<form onSubmit={formSignup}>
-			<label for="email">E-mail</label>
+			<label htmlFor="email">E-mail</label>
 			<input
 				type="text"
 				id="email"
@@ -95,7 +95,7 @@ const SignupForm = ({ setCurrentUser }) => {
 				onChange={handleEmailField}
 			/>
 			<br />
-			<label for="password">Password</label>
+			<label htmlFor="password">Password</label>
 			<input
 				type="text"
 				id="password"
@@ -103,7 +103,7 @@ const SignupForm = ({ setCurrentUser }) => {
 				onChange={handlePasswordField}
 			/>
 			<br />
-			<label for="fname">First Name</label>
+			<label htmlFor="fname">First Name</label>
 			<input
 				type="text"
 				id="fname"
@@ -111,7 +111,7 @@ const SignupForm = ({ setCurrentUser }) => {
 				onChange={handleFnameField}
 			/>
 			<br />
-			<label for="lname">Last Name</label>
+			<label htmlFor="lname">Last Name</label>
 			<input
 				type="text"
 				id="lname"
@@ -119,7 +119,7 @@ const SignupForm = ({ setCurrentUser }) => {
 				onChange={handleLnameField}
 			/>
 			<br />
-			<label for="phone">Phone Number</label>
+			<label htmlFor="phone">Phone Number</label>
 			<input
 				type="text"
 				id="phone"
@@ -136,7 +136,7 @@ const SignupForm = ({ setCurrentUser }) => {
 				value="male"
 				onChange={handleGenderField}
 			/>
-			<label for="male">Male</label>
+			<label htmlFor="male">Male</label>
 			<br />
 			<input
 				type="radio"
@@ -145,7 +145,7 @@ const SignupForm = ({ setCurrentUser }) => {
 				value="female"
 				onChange={handleGenderField}
 			/>
-			<label for="female">Female</label>
+			<label htmlFor="female">Female</label>
 			<br />
 			<input
 				type="radio"
@@ -154,9 +154,9 @@ const SignupForm = ({ setCurrentUser }) => {
 				value="other"
 				onChange={handleGenderField}
 			/>
-			<label for="other">Other</label>
+			<label htmlFor="other">Other</label>
 			<br />
-			<label for="date">Date Of Birth</label>
+			<label htmlFor="date">Date Of Birth</label>
 			<input
 				type="date"
 				id="date"
@@ -164,15 +164,15 @@ const SignupForm = ({ setCurrentUser }) => {
 				onChange={handleDOBField}
 			/>
 			<br />
-			<label for="profilePicture">Profile Picture</label>
+			<label htmlFor="profilePicture">Profile Picture</label>
 			<input
-				type="image"
+				type="text"
 				id="profilePicture"
 				value={profilePictureTextField}
 				onChange={handleProfilePictureField}
 			/>
 			<br />
-			<label for="hometown">Hometown</label>
+			<label htmlFor="hometown">Hometown</label>
 			<input
 				type="text"
 				id="hometown"
@@ -180,7 +180,7 @@ const SignupForm = ({ setCurrentUser }) => {
 				onChange={handleHomeTownField}
 			/>
 			<br />
-			<label for="martialStatus">Martial Status</label>
+			<label htmlFor="martialStatus">Martial Status</label>
 			<input
 				type="text"
 				id="martialStatus"
@@ -188,7 +188,7 @@ const SignupForm = ({ setCurrentUser }) => {
 				onChange={handleMaritalStatusField}
 			/>
 			<br />
-			<label for="aboutMe">About Me</label>
+			<label htmlFor="aboutMe">About Me</label>
 			<input
 				type="text"
 				id="aboutMe"
