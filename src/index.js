@@ -22,7 +22,9 @@ const App = () => {
 	if (currentPage === "signup") {
 		return (
 			<>
-				<Signup setCurrentUser={setCurrentUser} />
+				<Signup setCurrentUser={setCurrentUser}
+						setCurrentPage={setCurrentPage}		
+				/>
 			</>
 		);
 	}
