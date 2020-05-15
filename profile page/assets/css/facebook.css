@@ -175,6 +175,63 @@ h1,h2,h3 {
   margin: 30px;
   margin-top: 0;
   border:none;
+  border-bottom:3px outset #CA0B00;
+  background-color:#F32013;  
+  text-align: center;  
+  width: 200px;
+  height: 50px;
+  color: white;
+  border-radius:5px 5px 5px 5px;
+  display: block;
+  position: relative;
+  bottom: 20px;
+  left: 120px;
+}
+.toggle-friend-remove:hover{
+  background-color:#CA0B00;
+}
+.toggle-friend-accept{
+  margin: 30px;
+  margin-top: 0;
+  border:none;
+  border-bottom:3px outset rgb(42, 129, 45);;
+  background-color:#4CAF50;  
+  text-align: center;  
+  width: 200px;
+  height: 50px;
+  color: white;
+  border-radius:5px 5px 5px 5px;
+  display: block;
+  position: relative;
+  bottom: 20px;
+  left: 120px;
+}
+.toggle-friend-accept:hover{
+  background-color: green;
+}
+.toggle-friend-reject{
+  margin: 30px;
+  margin-top: 0;
+  border:none;
+  border-bottom:3px outset red;
+  background-color:#f44336;  
+  text-align: center;  
+  width: 200px;
+  height: 50px;
+  color: white;
+  border-radius:5px 5px 5px 5px;
+  display: block;
+  position: relative;
+  bottom: 20px;
+  left: 120px;
+}
+.toggle-friend-reject:hover{
+  background-color: red;
+}
+.toggle-friend-edit{
+  margin: 30px;
+  margin-top: 0;
+  border:none;
   border-bottom:3px outset #999712;
   background-color:#d6cd28;  
   text-align: center;  
@@ -187,8 +244,8 @@ h1,h2,h3 {
   bottom: 20px;
   left: 120px;
 }
-.toggle-friend-remove:hover{
-  background-color:#999712;
+.toggle-friend-edit:hover{
+  background-color: #999712;
 }
 .navbar-toggle, .close {
 	outline:0;
