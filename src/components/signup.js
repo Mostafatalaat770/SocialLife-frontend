@@ -12,7 +12,7 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 	const [fnameTextField, setFnameTextField] = useState("");
 	const [lnameTextField, setLnameTextField] = useState("");
 	const [phoneNumderTextField, setPhoneNumberTextField] = useState("");
-	const [genderTextField, setGenderTextField] = useState("");
+	const [genderTextField, setGenderTextField] = useState("Male");
 	const [dobTextField, setDOBTextField] = useState("");
 	const [profilePictureTextField, setProfilePictureTextField] = useState("");
 	const [homeTownTextField, setHomeTownTextField] = useState("");
@@ -206,7 +206,9 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 										<input
 											className="input--style-4"
 											type="text"
-											name="Address"
+											name="marital_status"
+											value={maritalStatusTextField}
+											onChange={handleMaritalStatusField}
 										/>
 									</div>
 								</div>
@@ -221,6 +223,8 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 											className="input--style-4"
 											type="text"
 											name="home-town"
+											value={homeTownTextField}
+											onChange={handleHomeTownField}
 										/>
 									</div>
 								</div>
@@ -232,7 +236,9 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 										<input
 											className="input--style-4"
 											type="text"
-											name="material-status"
+											name="about_me"
+											value={aboutMeTextField}
+											onChange={handleAboutMeField}
 										/>
 									</div>
 								</div>
