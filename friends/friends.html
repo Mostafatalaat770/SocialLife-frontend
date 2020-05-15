@@ -38,10 +38,19 @@
 							<form class="navbar-form navbar-left">
 								<div class="input-group input-group-sm" style="max-width:360px;">
 								  <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-								  <div class="input-group-btn">
-									<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								  <div class="dropdown input-group-btn">
+								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									  <i class="glyphicon glyphicon-search"></i>
+								  </button>
+								  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="#">Full Email</a><br>
+									<a class="dropdown-item" href="#">First,Last Name</a><br>
+									<a class="dropdown-item" href="#">Phone Number</a><br>
+									<a class="dropdown-item" href="#">Home Town</a><br>
+									<a class="dropdown-item" href="#">Part of Caption</a><br>
 								  </div>
-								</div>
+							  </div>
+							  </div>
 							</form>
 							<ul class="nav navbar-nav">
 							  <li>
@@ -51,7 +60,7 @@
 								<a href="E:\programms\Vs\Social Network\profile page\profile.html"><i class="glyphicon"></i>profile page</a>
 							  </li>
 							  <li>
-								<a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
+								<a href="E:\programms\Vs\Social Network\main page\post.html"><i class="glyphicon glyphicon-plus"></i> Post</a>
 							  </li>
 							  <li>
 								<a href="E:\programms\Vs\Social Network\friends\friends.html"><span class="badge">friends</span></a>
@@ -86,3 +95,19 @@
 							</tbody>
 						</table>
 						</div>
+						<script type="text/javascript" src="assets/js/jquery.js"></script>
+       					 <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+       					 <script type="text/javascript">
+						$(document).ready(function() {
+							$('[data-toggle=offcanvas]').click(function() {
+								$(this).toggleClass('visible-xs text-center');
+								$(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+								$('.row-offcanvas').toggleClass('active');
+								$('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
+								$('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
+								$('#btnShow').toggle();
+							});
+						});
+						</script>
+					</body>
+					</html>
