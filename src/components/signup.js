@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { signup } from "../services/dataController";
-import "../pages/signup/vendor/mdi-font/css/material-design-iconic-font.min.css"
-import "../pages/signup/vendor/font-awesome-4.7/css/font-awesome.min.css"
-import "../pages/signup/vendor/select2/select2.min.css"
-import "../pages/signup/vendor/datepicker/daterangepicker.css"
-import "../pages/signup/css/main.css"
+import "../pages/signup/vendor/mdi-font/css/material-design-iconic-font.min.css";
+import "../pages/signup/vendor/font-awesome-4.7/css/font-awesome.min.css";
+import "../pages/signup/vendor/select2/select2.min.css";
+import "../pages/signup/vendor/datepicker/daterangepicker.css";
+import "../pages/signup/css/main.css";
 
 const Signup = ({ setCurrentUser, setCurrentPage }) => {
 	const [emailTextField, setEmailTextField] = useState("");
@@ -76,33 +76,51 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 				<div className="card card-4">
 					<div className="card-body">
 						<h2 className="title">Registration Form</h2>
-						<form
-							onSubmit={formSignup}
-						>
+						<form onSubmit={formSignup}>
 							<div className="row row-space">
 								<div className="col-2">
 									<div className="input-group">
-										<label className="label">first name</label>
-										<input className="input--style-4" type="text" name="first_name" value={fnameTextField}
-											onChange={handleFnameField} />
+										<label className="label">
+											first name
+										</label>
+										<input
+											className="input--style-4"
+											type="text"
+											name="first_name"
+											value={fnameTextField}
+											onChange={handleFnameField}
+										/>
 									</div>
 								</div>
 								<div className="col-2">
 									<div className="input-group">
-										<label className="label">last name</label>
-										<input className="input--style-4" type="text" name="last_name" value={lnameTextField}
-											onChange={handleLnameField} />
+										<label className="label">
+											last name
+										</label>
+										<input
+											className="input--style-4"
+											type="text"
+											name="last_name"
+											value={lnameTextField}
+											onChange={handleLnameField}
+										/>
 									</div>
 								</div>
 							</div>
 							<div className="row row-space">
 								<div className="col-2">
 									<div className="input-group">
-										<label className="label">Birthday</label>
+										<label className="label">
+											Birthday
+										</label>
 										<div className="input-group-icon">
-											<input className="input--style-4 js-datepicker" type="date" name="birthday" value={dobTextField}
-												onChange={handleDOBField} />
-
+											<input
+												className="input--style-4 js-datepicker"
+												type="date"
+												name="birthday"
+												value={dobTextField}
+												onChange={handleDOBField}
+											/>
 										</div>
 									</div>
 								</div>
@@ -110,14 +128,25 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 									<div className="input-group">
 										<label className="label">Gender</label>
 										<div className="p-t-10">
-											<label className="radio-container m-r-45">Male
-                          <input type="radio" defaultChecked="checked" name="gender" value="Male"
-													onChange={handleGenderField} />
+											<label className="radio-container m-r-45">
+												Male
+												<input
+													type="radio"
+													defaultChecked="checked"
+													name="gender"
+													value="Male"
+													onChange={handleGenderField}
+												/>
 												<span className="checkmark" />
 											</label>
-											<label className="radio-container">Female
-                          <input type="radio" name="gender" value="Female"
-													onChange={handleGenderField} />
+											<label className="radio-container">
+												Female
+												<input
+													type="radio"
+													name="gender"
+													value="Female"
+													onChange={handleGenderField}
+												/>
 												<span className="checkmark" />
 											</label>
 										</div>
@@ -128,39 +157,116 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 								<div className="col-2">
 									<div className="input-group">
 										<label className="label">Email</label>
-										<input className="input--style-4" type="email" name="email" value={emailTextField}
-											onChange={handleEmailField} />
+										<input
+											className="input--style-4"
+											type="email"
+											name="email"
+											value={emailTextField}
+											onChange={handleEmailField}
+										/>
 									</div>
 								</div>
 								<div className="col-2">
 									<div className="input-group">
-										<label className="label">Phone Number</label>
-										<input className="input--style-4" type="text" name="phone" value={phoneNumderTextField}
-											onChange={handlePhoneNumberField} />
-									</div>
-								</div>
-								<div className="col-2">
-									<div className="input-group">
-										<label className="label">Password</label>
-										<input className="input--style-4" type="password" name="password" id="pass" value={passwordTextField}
-											onChange={handlePasswordField} />
+										<label className="label">
+											Password
+										</label>
+										<input
+											className="input--style-4"
+											type="password"
+											name="password"
+											id="pass"
+											value={passwordTextField}
+											onChange={handlePasswordField}
+										/>
 									</div>
 								</div>
 							</div>
-					<div className="col-2">
-						<div className="input-group edit">
-							<label className="label">Profile Picture</label>
-							<input className="input--style-4 edit_input" type="file" name="img-pic" accept="image/*" 
-								onChange={handleProfilePictureField} />
-						</div>
-						<div className="pos">
-							<button className="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-						</div>
+							<div className="row row-space">
+								<div className="col-2">
+									<div className="input-group">
+										<label className="label">
+											Phone Number
+										</label>
+										<input
+											className="input--style-4"
+											type="text"
+											name="phone"
+											value={phoneNumderTextField}
+											onChange={handlePhoneNumberField}
+										/>
+									</div>
+								</div>
+
+								<div className="col-2">
+									<div className="input-group">
+										<label className="label">
+											Material Status
+										</label>
+										<input
+											className="input--style-4"
+											type="text"
+											name="Address"
+										/>
+									</div>
+								</div>
+							</div>
+							<div className="row row-space">
+								<div className="col-2">
+									<div className="input-group">
+										<label className="label">
+											Home Town
+										</label>
+										<input
+											className="input--style-4"
+											type="text"
+											name="home-town"
+										/>
+									</div>
+								</div>
+								<div className="col-2">
+									<div className="input-group">
+										<label className="label">
+											About Me
+										</label>
+										<input
+											className="input--style-4"
+											type="text"
+											name="material-status"
+										/>
+									</div>
+								</div>
+								<div className="row row-space">
+									<div className="col-2">
+										<div className="input-group">
+											<label className="label">
+												Profile Picture
+											</label>
+											<input
+												className="input--style-4 edit_input"
+												type="file"
+												name="img-pic"
+												accept="image/*"
+											/>
+										</div>
+									</div>
+									<div className="col-2">
+										<div className="pos">
+											<button
+												className="btn btn--radius-2 btn--blue editt"
+												type="submit"
+											>
+												Submit
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
-					</form></div>
 				</div>
 			</div>
 		</div>
 	);
 };
-export default Signup
+export default Signup;
