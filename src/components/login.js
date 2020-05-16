@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { login } from "../services/dataController";
 import "../pages/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css";
 import "../pages/login/fonts/iconic/css/material-design-iconic-font.min.css";
-//import "../pages/login/vendor/bootstrap/css/bootstrap.min.css";
 import "../pages/login/css/util.css";
 import "../pages/login/css/main.css";
 
@@ -23,7 +22,7 @@ const Login = ({ setCurrentUser, setCurrentPage }) => {
 		})
 			.then((user) => {
 				setCurrentUser(user.data);
-				setCurrentPage("profilePage");
+				setCurrentPage("friendsPage");
 			})
 			.catch((err) => {
 				setCurrentUser(null);
