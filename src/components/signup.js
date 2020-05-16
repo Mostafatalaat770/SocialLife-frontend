@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { signup } from "../services/dataController";
+import { signup, uploadProfilePicture } from "../services/dataController";
 import "../pages/signup/vendor/mdi-font/css/material-design-iconic-font.min.css";
 import "../pages/signup/vendor/font-awesome-4.7/css/font-awesome.min.css";
 import "../pages/signup/vendor/select2/select2.min.css";
@@ -12,9 +12,9 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 	const [fnameTextField, setFnameTextField] = useState("");
 	const [lnameTextField, setLnameTextField] = useState("");
 	const [phoneNumderTextField, setPhoneNumberTextField] = useState("");
-	const [genderTextField, setGenderTextField] = useState("");
+	const [genderTextField, setGenderTextField] = useState("Male");
 	const [dobTextField, setDOBTextField] = useState("");
-	const [profilePictureTextField, setProfilePictureTextField] = useState("");
+	const profilePictureImage = React.createRef();
 	const [homeTownTextField, setHomeTownTextField] = useState("");
 	const [maritalStatusTextField, setMaritalStatusTextField] = useState("");
 	const [aboutMeTextField, setAboutMeTextField] = useState("");
@@ -39,9 +39,6 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 	const handleDOBField = (event) => {
 		setDOBTextField(event.target.value);
 	};
-	const handleProfilePictureField = (event) => {
-		setProfilePictureTextField(event.target.value);
-	};
 	const handleHomeTownField = (event) => {
 		setHomeTownTextField(event.target.value);
 	};
@@ -61,13 +58,16 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 			phone_number: phoneNumderTextField,
 			gender: genderTextField,
 			DOB: dobTextField,
-			profile_picture: profilePictureTextField,
 			home_town: homeTownTextField,
 			marital_status: maritalStatusTextField,
 			about_me: aboutMeTextField,
 		}).then((user) => {
-			setCurrentUser(user.data);
-			setCurrentPage("profilePage");
+			const profilePicture = new FormData()
+			profilePicture.append("profilePicture", profilePictureImage.current.files[0])
+			uploadProfilePicture(profilePicture).then(res => 
+			{setCurrentUser(user.data);
+			setCurrentPage("profilePage");}
+			)
 		});
 	};
 	return (
@@ -78,7 +78,7 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 						<h2 className="title">Registration Form</h2>
 						<form onSubmit={formSignup}>
 							<div className="row row-space">
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
 											first name
@@ -92,7 +92,7 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 										/>
 									</div>
 								</div>
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
 											last name
@@ -108,13 +108,14 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 								</div>
 							</div>
 							<div className="row row-space">
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
 											Birthday
 										</label>
-										<div className="input-group-icon">
+										<div className="input-group">
 											<input
+												style={{padding: "0 20px"}}
 												className="input--style-4 js-datepicker"
 												type="date"
 												name="birthday"
@@ -124,11 +125,11 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 										</div>
 									</div>
 								</div>
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">Gender</label>
-										<div className="p-t-10">
-											<label className="radio-container m-r-45">
+										<div className="input-group">
+											<label className="radio-container m-r-45" style={{paddingTop: 20}}>
 												Male
 												<input
 													type="radio"
@@ -137,9 +138,9 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 													value="Male"
 													onChange={handleGenderField}
 												/>
-												<span className="checkmark" />
+												<span className="checkmark" style={{top:"70%"}}/>
 											</label>
-											<label className="radio-container">
+											<label className="radio-container" style={{paddingTop: 20}}>
 												Female
 												<input
 													type="radio"
@@ -147,14 +148,14 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 													value="Female"
 													onChange={handleGenderField}
 												/>
-												<span className="checkmark" />
+												<span className="checkmark" style={{top:"70%"}}/>
 											</label>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div className="row row-space">
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">Email</label>
 										<input
@@ -166,7 +167,7 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 										/>
 									</div>
 								</div>
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
 											Password
@@ -183,7 +184,7 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 								</div>
 							</div>
 							<div className="row row-space">
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
 											Phone Number
@@ -198,7 +199,7 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 									</div>
 								</div>
 
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
 											Material Status
@@ -206,13 +207,15 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 										<input
 											className="input--style-4"
 											type="text"
-											name="Address"
+											name="marital_status"
+											value={maritalStatusTextField}
+											onChange={handleMaritalStatusField}
 										/>
 									</div>
 								</div>
 							</div>
 							<div className="row row-space">
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
 											Home Town
@@ -221,10 +224,12 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 											className="input--style-4"
 											type="text"
 											name="home-town"
+											value={homeTownTextField}
+											onChange={handleHomeTownField}
 										/>
 									</div>
 								</div>
-								<div className="col-2">
+								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
 											About Me
@@ -232,12 +237,14 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 										<input
 											className="input--style-4"
 											type="text"
-											name="material-status"
+											name="about_me"
+											value={aboutMeTextField}
+											onChange={handleAboutMeField}
 										/>
 									</div>
 								</div>
 								<div className="row row-space">
-									<div className="col-2">
+									<div className="col-6">
 										<div className="input-group">
 											<label className="label">
 												Profile Picture
@@ -245,20 +252,21 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 											<input
 												className="input--style-4 edit_input"
 												type="file"
-												name="img-pic"
+												name="profilePicture"
 												accept="image/*"
+												ref={profilePictureImage}
 											/>
 										</div>
 									</div>
-									<div className="col-2">
-										<div className="pos">
+									<div className="col-6" style={{ top: 30, left: "43%",  }}>
 											<button
-												className="btn btn--radius-2 btn--blue editt"
+												className="btn btn-primary btn-lg"
+												style={{fontSize: 18,
+													background: "#4272d7"}}
 												type="submit"
 											>
 												Submit
 											</button>
-										</div>
 									</div>
 								</div>
 							</div>
