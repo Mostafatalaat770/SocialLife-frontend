@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../public/css/bootstrap/bootstrap.min.css";
+import "../css/bootstrap/bootstrap.min.css";
 const Nav = ({ currentUser, setCurrentPage, setRequestedID }) => {
 	const [searchIndicator, setsearchIndicator] = useState("Name");
 	const [searchMode, setSearchMode] = useState(0);
