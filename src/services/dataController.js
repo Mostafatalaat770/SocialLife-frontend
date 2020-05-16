@@ -8,6 +8,16 @@ const login = (input) => {
 const signup = (input) => {
     return axios.post(`${url}/signup`, input).then(response => response)
 }
+const uploadProfilePicture = (formData) => {
+    return axios({
+        method: "POST",
+        url: `${url}/upload/profilePicture`,
+        data: formData,
+        headers: {
+            'content-type': `multipart/form-data;`,
+            }
+      }).then(response => response)
+}
 const updateCurrentProfile = (updatedData) => {
    return axios.put(`${url}/profile/edit`, updatedData).then(response => response)
 }
@@ -22,6 +32,12 @@ const addPublicPost = (post) => {
 }
 const addPrivatePost = (post) => {
     return axios.post(`${url}/posts/private`, post).then(response => response)
+}
+const getFriends = () =>{
+    return axios.get(`${url}/user/friend`).then(response=>response)
+}
+const getFriendsRequest = () =>{
+    return axios.get(`${url}/user/friendRequest`).then(response=>response)
 }
 const acceptFriendRequest = (FriendID) => {
     return axios.post(`${url}/user/${FriendID}/acceptFriendRequest`).then(response => response)
@@ -41,11 +57,14 @@ const getFriendsPosts = () => {
 export {
     login,
     signup,
+    uploadProfilePicture,
     updateCurrentProfile,
     getUserByID,
     getUserInfoByID,
     addPublicPost,
     addPrivatePost,
+    getFriends,
+    getFriendsRequest,
     acceptFriendRequest,
     sendFriendRequest,
     deleteFriendRequest,
