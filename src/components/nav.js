@@ -75,6 +75,14 @@ const Nav = ({ currentUser, setCurrentPage, setRequestedID, setSearchMode, setSe
 							Friends Requests
 						</a>
 					</li>
+                    <li className="nav-item">
+						<a className="nav-link" href="#"
+                        onClick={() => {
+                            setCurrentPage("createPostPage");
+                        }}>
+							Create Post
+						</a>
+					</li>
 				</ul>
 				<form className="form-inline my-2 my-lg-0" onSubmit={searchSubmit}>
                 <ul className="navbar-nav mr-auto">

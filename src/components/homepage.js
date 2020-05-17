@@ -21,6 +21,7 @@ const HomePage = ({setCurrentPage, setRequestedID}) => {
 		<div className="container">
 			<ul className="list-group list-group-flush">{posts}</ul>
 		</div>
+
 	);
 };
 export default HomePage;
