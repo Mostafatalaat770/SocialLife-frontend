@@ -22,7 +22,7 @@ const Login = ({ setCurrentUser, setCurrentPage }) => {
 		})
 			.then((user) => {
 				setCurrentUser(user.data);
-				setCurrentPage("friendsPage");
+				setCurrentPage("homePage");
 			})
 			.catch((err) => {
 				setCurrentUser(null);

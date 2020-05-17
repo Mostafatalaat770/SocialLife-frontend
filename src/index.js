@@ -7,6 +7,9 @@ import Friends from "./components/friends"
 import FriendRequests from "./components/friendRequests"
 import Nav from "./components/nav"
 import Search from "./components/search"
+import Homepage from "./components/homepage"
+import ProfileEdit from "./components/ProfileEdit"
+
 
 const App = () => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -36,12 +39,27 @@ const App = () => {
 		);
 	}
 
+	if(currentPage === "homePage"){
+		return <>
+		<Nav currentUser={currentUser} setCurrentPage={setCurrentPage} setRequestedID={setRequestedID} setSearchMode={setSearchMode} setSearchQuery={setSearchQuery} />
+			<Homepage setCurrentPage={setCurrentPage} setRequestedID={setRequestedID} />
+		</>
+	}
+
 	if(currentPage === "profilePage"){
 		return <>
 		<Nav currentUser={currentUser} setCurrentPage={setCurrentPage} setRequestedID={setRequestedID} setSearchMode={setSearchMode} setSearchQuery={setSearchQuery} />
-			<Profile requestedID={requestedID} currentUserID={currentUser.ID}/>
+			<Profile requestedID={requestedID} currentUserID={currentUser.ID} setCurrentPage={setCurrentPage} />
 		</>
 	}
+
+	if(currentPage === "profileEditPage"){
+		return <>
+		<Nav currentUser={currentUser} setCurrentPage={setCurrentPage} setRequestedID={setRequestedID} setSearchMode={setSearchMode} setSearchQuery={setSearchQuery} />
+			<ProfileEdit currentUser={currentUser} setCurrentUser={setCurrentUser} setCurrentPage={setCurrentPage} />
+		</>
+	}
+	
 	if(currentPage === "friendsPage"){
 		return (
 		<>

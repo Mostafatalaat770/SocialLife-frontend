@@ -66,7 +66,7 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 			profilePicture.append("profilePicture", profilePictureImage.current.files[0])
 			uploadProfilePicture(profilePicture).then(res => 
 			{setCurrentUser(user.data);
-			setCurrentPage("profilePage");}
+			setCurrentPage("homePage");}
 			)
 		});
 	};
