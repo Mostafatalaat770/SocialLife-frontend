@@ -54,6 +54,11 @@ const unfriend = (FriendID) => {
 const getFriendsPosts = () => {
     return axios.get(`${url}/homepage`).then(response => response)
 }
+const searchByMode = (mode, query) => {
+    const data = {searchType: mode, key: query}
+    console.log(data);
+    return axios.get(`${url}/search/${mode}/${query}`).then(response => response)
+}
 export {
     login,
     signup,
@@ -69,5 +74,6 @@ export {
     sendFriendRequest,
     deleteFriendRequest,
     unfriend,
-    getFriendsPosts
+    getFriendsPosts,
+    searchByMode
 }
