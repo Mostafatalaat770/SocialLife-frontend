@@ -9,24 +9,28 @@ const CreatePost = ({ currentUser, setCurrentPage }) => {
         event.preventDefault()
         if(isPublic === "true"){
             addPublicPost({"text_content": textContent}).then((res) => {
+                if(PostPictureImage.current.files[0]){
                 const postPicture = new FormData()
                 postPicture.append("postPicture", PostPictureImage.current.files[0])
                 uploadPostPicture(postPicture, res.data.post_ID, isPublic).then(res => 
                 {
                 setCurrentPage("homePage");}
-                )
-                setCurrentPage("homePage");
+                )}
+                else{
+                setCurrentPage("homePage");}
             });
         }
         else{
             addPrivatePost({"text_content": textContent}).then((res) => {
+                if(PostPictureImage.current.files[0]){
                 const postPicture = new FormData()
                 postPicture.append("postPicture", PostPictureImage.current.files[0])
                 uploadPostPicture(postPicture, res.data.post_ID, isPublic).then(res => 
                 {
                 setCurrentPage("homePage");}
-                )
-                setCurrentPage("homePage");
+                )}
+                else{
+                setCurrentPage("homePage");}
             });
         }
     }
@@ -80,7 +84,6 @@ const CreatePost = ({ currentUser, setCurrentPage }) => {
                     id="customRadioInline1"
                     name="customRadioInline1"
                     className="custom-control-input"
-                    value="true"
                     onChange={() => setIsPublic("true")}
 
                   />
@@ -94,7 +97,6 @@ const CreatePost = ({ currentUser, setCurrentPage }) => {
                     id="customRadioInline2"
                     name="customRadioInline1"
                     className="custom-control-input"
-                    value="false"
                     onChange={() => setIsPublic("false")}
                   />
                   <label className="custom-control-label" htmlFor="customRadioInline2">
