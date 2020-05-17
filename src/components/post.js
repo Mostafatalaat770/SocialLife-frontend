@@ -31,7 +31,8 @@ const Post = ({post, setCurrentPage, setRequestedID}) => {
 		<div style={{display: "inline-flex"}}>
 			 <PosterInfo posterID={post.posted_by} postTime={post.time} setCurrentPage={setCurrentPage} setRequestedID={setRequestedID}/>			 
   <div className="card" style={{ width: "18rem" }}>
-  <img src="/images/postPictures/test.jpg" className="card-img-top" alt="..." />
+	  {post.image_content &&
+  <img src={`/images/postPictures/${post.image_content}`} className="card-img-top" alt="..." />}
   <div className="card-body">
     <p className="card-text">
 	{post.text_content}
