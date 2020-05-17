@@ -9,7 +9,7 @@ import Nav from "./components/nav"
 import Search from "./components/search"
 import Homepage from "./components/homepage"
 import ProfileEdit from "./components/ProfileEdit"
-
+import CreatePost from "./components/createPost"
 
 const App = () => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -52,7 +52,12 @@ const App = () => {
 			<Profile requestedID={requestedID} currentUserID={currentUser.ID} setCurrentPage={setCurrentPage} />
 		</>
 	}
-
+	if(currentPage === "createPostPage"){
+		return <>
+		<Nav currentUser={currentUser} setCurrentPage={setCurrentPage} setRequestedID={setRequestedID} setSearchMode={setSearchMode} setSearchQuery={setSearchQuery} />
+			<CreatePost currentUser={currentUser} setCurrentPage={setCurrentPage} />
+		</>
+	}	
 	if(currentPage === "profileEditPage"){
 		return <>
 		<Nav currentUser={currentUser} setCurrentPage={setCurrentPage} setRequestedID={setRequestedID} setSearchMode={setSearchMode} setSearchQuery={setSearchQuery} />
