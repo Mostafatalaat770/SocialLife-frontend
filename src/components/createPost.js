@@ -15,6 +15,7 @@ const CreatePost = ({ currentUser, setCurrentPage }) => {
                 {
                 setCurrentPage("homePage");}
                 )
+                setCurrentPage("homePage");
             });
         }
         else{
@@ -25,6 +26,7 @@ const CreatePost = ({ currentUser, setCurrentPage }) => {
                 {
                 setCurrentPage("homePage");}
                 )
+                setCurrentPage("homePage");
             });
         }
     }
