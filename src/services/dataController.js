@@ -21,6 +21,16 @@ const uploadProfilePicture = (formData) => {
             }
       }).then(response => response)
 }
+const uploadPostPicture = (formData, PostID, isPublic) => {
+    return axios({
+        method: "POST",
+        url: `${url}/upload/postPictures/${PostID}/${isPublic}`,
+        data: formData,
+        headers: {
+            'content-type': `multipart/form-data;`,
+            }
+      }).then(response => response)
+}
 const updateCurrentProfile = (updatedData) => {
    return axios.put(`${url}/profile/edit`, updatedData).then(response => response)
 }
@@ -67,6 +77,7 @@ export {
     signup,
     logout,
     uploadProfilePicture,
+    uploadPostPicture,
     updateCurrentProfile,
     getUserByID,
     getUserInfoByID,
