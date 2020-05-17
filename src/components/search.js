@@ -43,13 +43,13 @@ return (
 );
 }
 else{
-const posts = searchResults.map((post) => (
-    <Post post={post} key={post.Post_ID} />
-));
+const posts = searchResults.map((post) => (		<li className="list-group-item">
+<Post post={post} key={post.Post_ID} setCurrentPage={setCurrentPage} setRequestedID={setRequestedID} />
+</li>));
 return(
     <div className="container">
-        {posts}
-    </div>
+			<ul className="list-group list-group-flush">{posts}</ul>
+		</div>
 )
 }}
 export default Search
