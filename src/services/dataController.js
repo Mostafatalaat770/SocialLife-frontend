@@ -8,6 +8,9 @@ const login = (input) => {
 const signup = (input) => {
     return axios.post(`${url}/signup`, input).then(response => response)
 }
+const logout = () => {
+    return axios.post(`${url}/logout`,).then(response => response)
+}
 const uploadProfilePicture = (formData) => {
     return axios({
         method: "POST",
@@ -62,6 +65,7 @@ const searchByMode = (mode, query) => {
 export {
     login,
     signup,
+    logout,
     uploadProfilePicture,
     updateCurrentProfile,
     getUserByID,
