@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { logout } from "../services/dataController"
 import "../css/bootstrap/bootstrap.min.css";
 const Nav = ({ currentUser, setCurrentPage, setRequestedID, setSearchMode, setSearchQuery }) => {
 	const [searchIndicator, setsearchIndicator] = useState("Name");
@@ -76,6 +77,15 @@ const Nav = ({ currentUser, setCurrentPage, setRequestedID, setSearchMode, setSe
 					</li>
 				</ul>
 				<form className="form-inline my-2 my-lg-0" onSubmit={searchSubmit}>
+                <ul className="navbar-nav mr-auto">
+                    <li className ="nav-item"></li>
+                    <a className="nav-link" href="#"
+                        onClick={() => {
+                            logout().then(setCurrentPage("login"))
+                        }}>
+							Logout
+						</a>
+                    </ul>
 					<input
 						className="form-control mr-sm-2"
 						type="search"
