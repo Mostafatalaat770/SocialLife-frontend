@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import "../css/bootstrap/bootstrap.min.css";
-const Nav = ({ currentUser, setCurrentPage, setRequestedID }) => {
+const Nav = ({ currentUser, setCurrentPage, setRequestedID, setSearchMode, setSearchQuery }) => {
 	const [searchIndicator, setsearchIndicator] = useState("Name");
-	const [searchMode, setSearchMode] = useState(0);
-
+    const [searchType, setSearchType] = useState(1);
+    const [searchText, setSearchtext] = useState("")
+    
+    const searchSubmit = (event) => {
+        event.preventDefault()
+        console.log(setSearchMode, setSearchQuery, setCurrentPage);
+        setSearchQuery(searchText)
+        setSearchMode(searchType)
+        setCurrentPage("searchPage")
+    }
+    const handleSearchText = (event) => {
+        setSearchtext(event.target.value)
+    }
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<span className="navbar-brand mb-0 h1">Social Life</span>
@@ -64,12 +75,13 @@ const Nav = ({ currentUser, setCurrentPage, setRequestedID }) => {
 						</a>
 					</li>
 				</ul>
-				<form className="form-inline my-2 my-lg-0">
+				<form className="form-inline my-2 my-lg-0" onSubmit={searchSubmit}>
 					<input
 						className="form-control mr-sm-2"
 						type="search"
 						placeholder="Search"
-						aria-label="Search"
+                        aria-label="Search"
+                        onChange={handleSearchText}
 					/>
 					<div className="dropdown">
 						<button
@@ -91,7 +103,7 @@ const Nav = ({ currentUser, setCurrentPage, setRequestedID }) => {
 								href="#"
 								onClick={() => {
 									setsearchIndicator("Name");
-									setSearchMode(0);
+									setSearchType(1);
 								}}
 							>
 								Name
@@ -101,7 +113,7 @@ const Nav = ({ currentUser, setCurrentPage, setRequestedID }) => {
 								href="#"
 								onClick={() => {
 									setsearchIndicator("Email");
-									setSearchMode(1);
+									setSearchType(2);
 								}}
 							>
 								Email
@@ -111,7 +123,7 @@ const Nav = ({ currentUser, setCurrentPage, setRequestedID }) => {
 								href="#"
 								onClick={() => {
 									setsearchIndicator("Phone Number");
-									setSearchMode(2);
+									setSearchType(3);
 								}}
 							>
 								Phone Number
@@ -121,7 +133,7 @@ const Nav = ({ currentUser, setCurrentPage, setRequestedID }) => {
 								href="#"
 								onClick={() => {
 									setsearchIndicator("Hometown");
-									setSearchMode(3);
+									setSearchType(4);
 								}}
 							>
 								Hometown
@@ -131,7 +143,7 @@ const Nav = ({ currentUser, setCurrentPage, setRequestedID }) => {
 								href="#"
 								onClick={() => {
 									setsearchIndicator("Caption");
-									setSearchMode(4);
+									setSearchType(5);
 								}}
 							>
 								Caption
@@ -141,7 +153,7 @@ const Nav = ({ currentUser, setCurrentPage, setRequestedID }) => {
 
 					<button
 						className="btn btn-outline-success my-2 my-sm-0"
-						type="submit"
+                        type="submit"
 					>
 						Search
 					</button>
