@@ -8,9 +8,28 @@ import {
 } from "../services/dataController";
 import Post from "./post";
 
-const UserInfo = ({ userData, friendshipState }) => {
+const UserInfo = ({ userData, friendshipState, currentUserID, requestedID, setCurrentPage }) => {
 	return (
 		<>
+
+							<img
+						src={`/images/profilePictures/${userData.profilePicture}`}
+						className="img-circle pull-left"
+						alt
+						id="profile-pic"
+						height="100px"
+						width="100px"
+					/>
+										<div
+						id="about-me"
+						style={{
+							float: "right",
+							marginLeft: 50,
+							marginTop: 50,
+							position: "relative",
+							bottom: 30,
+						}}
+					>
 			<h2 id="profile-owner-name">
 				{userData.Fname} {userData.Lname}
 			</h2>
@@ -23,10 +42,18 @@ const UserInfo = ({ userData, friendshipState }) => {
 					<p id="About-me">{userData.aboutMe}</p>
 				</>
 			)}
+									<Friendship
+							currentUserID={currentUserID}
+							requestedID={requestedID}
+							friendshipState={friendshipState}
+							setCurrentPage={setCurrentPage}
+						/>
+								</div>
+
 		</>
 	);
 };
-const Friendship = ({ friendshipState, currentUserID, requestedID }) => {
+const Friendship = ({ friendshipState, currentUserID, requestedID, setCurrentPage}) => {
 	const [currentState, setCurrentStata] = useState(friendshipState)
 	const handleAddRequest = (ID) => {
 		sendFriendRequest(ID).then(setCurrentStata(2))
@@ -40,11 +67,15 @@ const Friendship = ({ friendshipState, currentUserID, requestedID }) => {
 		const handleAcceptRequest = (ID) => {
 		acceptFriendRequest(ID).then(setCurrentStata(0))
 	};
+		const handleEditProfileRequest = () => {
+			setCurrentPage("profileEditPage")
+	};
+	
 
 	switch (currentState) {
 		case 0: // isFriend or currentUser
 			if (currentUserID === requestedID) {
-				return <> </>;
+				return <button className="btn btn-danger" onClick={handleEditProfileRequest}>Edit Profile</button>
 			}
 			return <button className="btn btn-danger" onClick={() => handleRemoveRequest(requestedID)}>Remove Friend</button>;
 			break;
@@ -68,7 +99,7 @@ const Friendship = ({ friendshipState, currentUserID, requestedID }) => {
 	}
 };
 
-const Profile = ({ requestedID, currentUserID }) => {
+const Profile = ({ requestedID, currentUserID, setCurrentPage, setRequestedID }) => {
 	const [user, setUser] = useState(null);
 	useEffect(() => {
 		getUserByID(requestedID).then((response) => setUser(response.data));
@@ -80,80 +111,28 @@ const Profile = ({ requestedID, currentUserID }) => {
 	//TODO: relationship and info component
 
 	const posts = user.posts.map((post) => (
-		<Post post={post} key={post.Post_ID} />
+		<li className="list-group-item">
+		<Post post={post} key={post.Post_ID} setCurrentPage={setCurrentPage} setRequestedID={setRequestedID} />
+		</li>
 	));
 
 	return (
-		<div>
-			{/* TODO: realtionship and info component */}
 			<div className="container">
 				<div style={{ display: "inline-block" }}>
-					<img
-						src="assets/img/150x150.gif"
-						className="img-circle pull-left"
-						alt
-						id="profile-pic"
-					/>
-					<div
-						id="about-me"
-						style={{
-							float: "right",
-							marginLeft: 50,
-							marginTop: 50,
-							position: "relative",
-							bottom: 30,
-						}}
-					>
 						<UserInfo
 							userData={user.userData}
 							friendshipState={user.friendshipState}
-						/>
-						<Friendship
-							currentUserID={currentUserID}
 							requestedID={requestedID}
-							friendshipState={user.friendshipState}
+							currentUserID={currentUserID}
+							setCurrentPage={setCurrentPage}
 						/>
-					</div>
 				</div>
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						<a href="#" className="pull-right">
-							View all
-						</a>
-						<h4 id="post-holder">post</h4>
-					</div>
-					<div className="panel-body">
-						<img
-							src="assets/img/150x150.gif"
-							style={{
-								marginTop: 18,
-								height: 70,
-								width: 70,
-								borderRadius: "50%",
-							}}
-							className="img-circle pull-right"
-						/>{" "}
-						<a href="#">Hi</a>
-						<div className="clearfix" />
-						<p id="post-content">Noooooooooo</p>
-						<hr />
-						<ul className="list-unstyled">
-							<li>
-								<a href="#">Tal3oot</a>
-							</li>
-							<li>
-								<a href="#">Snoos</a>
-							</li>
-							<li>
-								<a href="#">Swidan</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+				<ul className="list-group list-group-flush">
+					{posts}
+				</ul>
+
 			</div>
 
-			{posts}
-		</div>
 	);
 };
 export default Profile;
