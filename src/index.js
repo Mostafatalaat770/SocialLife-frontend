@@ -49,7 +49,7 @@ const App = () => {
 	if(currentPage === "profilePage"){
 		return <>
 		<Nav currentUser={currentUser} setCurrentPage={setCurrentPage} setRequestedID={setRequestedID} setSearchMode={setSearchMode} setSearchQuery={setSearchQuery} />
-			<Profile requestedID={requestedID} currentUserID={currentUser.ID} setCurrentPage={setCurrentPage} />
+			<Profile requestedID={requestedID} currentUserID={currentUser.ID} setCurrentPage={setCurrentPage} key={requestedID}/>
 		</>
 	}
 	if(currentPage === "createPostPage"){
