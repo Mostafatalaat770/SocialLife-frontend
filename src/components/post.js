@@ -17,7 +17,7 @@ const PosterInfo = ({posterID, postTime, setCurrentPage, setRequestedID}) => {
 
 	return(
 			<div className="media" style={{marginRight: 30}}>
-  <img src={`/images/profilePictures/${posterInfo.profile_picture}`} className="align-self-start mr-3" alt="..."/>
+  <img src={`/images/profilePictures/${posterInfo.profile_picture}`} className="align-self-start mr-3" alt="..." height="100px" width="100px" />
   <div className="media-body">
     <a href="#" onClick={() => handleFriendClick(posterID)} className="mt-0">{`${posterInfo.Fname} ${posterInfo.Lname}`}</a>
     <p>{postTime}</p>
