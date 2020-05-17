@@ -81,7 +81,7 @@ const ProfileEdit = ({ currentUser, setCurrentUser, setCurrentPage }) => {
 			<div className="wrapper wrapper--w680">
 				<div className="card card-4">
 					<div className="card-body">
-						<h2 className="title">Registration Form</h2>
+						<h2 className="title">Edit Profile</h2>
 						<form onSubmit={updateProfile}>
 							<div className="row row-space">
 								<div className="col-6">
@@ -152,7 +152,7 @@ const ProfileEdit = ({ currentUser, setCurrentUser, setCurrentPage }) => {
 								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
-											Material Status
+											Martial Status
 										</label>
 										<input
 											className="input--style-4"

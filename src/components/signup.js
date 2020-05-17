@@ -202,7 +202,7 @@ const Signup = ({ setCurrentUser, setCurrentPage }) => {
 								<div className="col-6">
 									<div className="input-group">
 										<label className="label">
-											Material Status
+											Martial Status
 										</label>
 										<input
 											className="input--style-4"
