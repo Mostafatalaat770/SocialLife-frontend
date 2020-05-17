@@ -41,7 +41,7 @@ const FriendRequests = ({setCurrentPage, setRequestedID}) => {
 							<table className="table">
 								<thead>
 									<tr>
-										<th scope="col">Friends</th>
+										<th scope="col">Friend Requests</th>
                                         <th scope="col">Action</th>
 									</tr>
 								</thead>
